@@ -12,6 +12,7 @@
 
 ## Animation plans
 One script for each type of movement that can be easily reused with a few ambiguous variables like speed.
+- Boids https://www.youtube.com/watch?v=bqtqltqcQhw
 - Schooling fish (swim with others of same size class)
 - Territorial Fish (avoid others of same size class or larger)
 - Benthic fish (sticks to the bottom mostly)
