@@ -1,7 +1,12 @@
 # fishtank sim
 
+# Resources
+- http://www.theaquariumwiki.com/wiki/Main_Page
+
+
 # General Plans
 - Should fish have happiness?
+- Come up with a SOLID system for units of measurement.
 - Should fish be able to reproduce?
 - System for plants growing dynamically? (simple random patterns?)
 
