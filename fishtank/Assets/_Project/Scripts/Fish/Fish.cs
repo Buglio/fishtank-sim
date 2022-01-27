@@ -21,14 +21,14 @@ namespace fishtank
         {
             throw new NotImplementedException();
             // Check if tank stats are within the requirement range of the fish
-            // Affect fish health, age
+            // Affect fish health, age, happiness, etc
         }
 
         void AffectTankStats()
         {
             print("Updating tank...");
-            Tank.O2Level -= o2AffectRate;
-            Tank.Co2Level += co2AffectRate;
+            Tank.Stats.O2Ppm -= o2AffectRate;
+            Tank.Stats.Co2Ppm += co2AffectRate;
         }
     }
 }

@@ -361,12 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f79e15179ceedd429820842656b595f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simStep: 0.5
-  O2Level: 1
-  Co2Level: 1
-  fishInTank:
-  - {fileID: 1799279126}
-  _stepTimer: 0
+  _simStep: 0.5
+  startingStats: {fileID: 0}
+  Stats: {fileID: 11400000, guid: 28bf0fa331c328e4599fdb478a32c408, type: 2}
+  FishInTank: []
 --- !u!1 &1799279123
 GameObject:
   m_ObjectHideFlags: 0
