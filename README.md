@@ -1,4 +1,7 @@
 # fishtank sim
+<img src='sprites/neon_tetra_adult_v1.png'>
+
+
 
 ## Resources
 - http://www.theaquariumwiki.com/wiki/Main_Page
