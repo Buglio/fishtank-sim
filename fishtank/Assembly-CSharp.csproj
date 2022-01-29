@@ -59,8 +59,9 @@
     <Compile Include="Assets\_Project\Scripts\Tank\TankManager.cs" />
     <Compile Include="Assets\_Project\Scripts\Fish\Fish.cs" />
     <Compile Include="Assets\_Project\Scripts\ScriptableObjects\TankStats_SO.cs" />
-    <Compile Include="Assets\_Project\Scripts\ScriptableObjects\FishStats_SO.cs" />
+    <Compile Include="Assets\_Project\Scripts\ScriptableObjects\SpeciesStats_SO.cs" />
     <Compile Include="Assets\_Project\Scripts\Fish\Enums.cs" />
+    <Compile Include="Assets\_Project\Scripts\Fish\AffectTank.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
