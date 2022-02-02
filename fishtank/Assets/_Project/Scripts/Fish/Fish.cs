@@ -21,6 +21,9 @@ namespace fishtank
             ID = this.GetHashCode();
 
             tank = TankManager.Instance;
+
+            print(ReferenceEquals(tank, TankManager.Instance)); // This neat method confirms that the reference points to the instance
+
             if (!tank.FishInTank.Contains(this))
                 tank.FishInTank.Add(this);
         }
@@ -38,9 +41,9 @@ namespace fishtank
             // Affect fish health, age, happiness, etc
         }
 
+        // This is duplicate code. Also present in the plant class.
         void AffectTankStats()
         {
-            // Might want to move this into SimulateStep (in the fish class)
             print("Fish affecting tank stats...");
             tank.O2Ppm += SpeciesStats.O2AffectRate; // Make this logarithmic eventually
             tank.Co2Ppm += SpeciesStats.Co2AffectRate;

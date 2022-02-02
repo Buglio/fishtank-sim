@@ -29,10 +29,10 @@ namespace fishtank
             // Affect plant stats
         }
 
+        // This method is duplicated across this class and the fish class. Maybe we make a base class?
         void AffectTankStats()
         {
-            // Might want to move this into SimulateStep (in the fish class)
-            print("Plant affecting tank stats");
+            print("Plant affecting tank stats...");
             tank.O2Ppm += SpeciesStats.O2AffectRate; // Make this logarithmic eventually
             tank.Co2Ppm += SpeciesStats.Co2AffectRate;
         }
