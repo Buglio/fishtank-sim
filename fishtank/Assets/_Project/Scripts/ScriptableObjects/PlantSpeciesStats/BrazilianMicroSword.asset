@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d74d3b4da4a25e469167d631f7a8e25, type: 3}
+  m_Name: BrazilianMicroSword
+  m_EditorClassIdentifier: 
+  CommonName: Brazilian Micro Sword
+  ScientificName: Lilaeopsis brasiliensis
+  SegmentSizeInMM: 0
+  SegmentLifespan: 0
+  MinTempK: 0
+  MaxTempK: 0
+  MinPH: 0
+  MaxPH: 0
+  PropagationType: 0
+  O2AffectRate: 0.0000226667
+  Co2AffectRate: -0.0000226667
+  AmmoniaAffectRate: 0

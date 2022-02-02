@@ -11,7 +11,7 @@ namespace fishtank
         public float pH; // Player controlled via slider?
         public float O2Ppm;
         public float Co2Ppm;
-        public float AlkalinityPpm; // 
+        public float AlkalinityPpm; 
         public float AmmoniaPpm; // Pretty much anything other than 0 will kill fish
         public float NitritePpm; // Couldn't find good info
         public float NitratePpm; // Couldn't find good info

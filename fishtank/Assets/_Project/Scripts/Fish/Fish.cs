@@ -6,16 +6,29 @@ namespace fishtank
 {
     public class Fish : MonoBehaviour
     {
-        public TankManager Tank;
+        public FishSpeciesStats_SO SpeciesStats;
+        TankManager tank;
 
-        public SpeciesStats_SO SpeciesStats { get; private set; }
-        [SerializeField] float o2AffectRate;
-        [SerializeField] float co2AffectRate;
+        int ID;
+        int age;
+        bool canReproduce;
+        float hunger; // Between 0 and 1
+        float health; // Between 0 and 1
+        //float happiness; // ?
+
+        void Awake()
+        {
+            ID = this.GetHashCode();
+
+            tank = TankManager.Instance;
+            if (!tank.FishInTank.Contains(this))
+                tank.FishInTank.Add(this);
+        }
 
         public void SimulateStep()
         {
             //UpdateStats();
-            //AffectTankStats(); 
+            AffectTankStats(); 
         }
 
         void UpdateStats()
@@ -23,6 +36,14 @@ namespace fishtank
             throw new NotImplementedException();
             // Check if tank stats are within the requirement range of the fish
             // Affect fish health, age, happiness, etc
+        }
+
+        void AffectTankStats()
+        {
+            // Might want to move this into SimulateStep (in the fish class)
+            print("Fish affecting tank stats...");
+            tank.O2Ppm += SpeciesStats.O2AffectRate; // Make this logarithmic eventually
+            tank.Co2Ppm += SpeciesStats.Co2AffectRate;
         }
     }
 }

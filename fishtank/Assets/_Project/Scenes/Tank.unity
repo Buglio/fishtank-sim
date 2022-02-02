@@ -276,8 +276,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1479294625}
   - component: {fileID: 1479294624}
+  - component: {fileID: 1479294626}
   m_Layer: 0
-  m_Name: Plant
+  m_Name: Micro Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,6 +349,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479294626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479294623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4715911c520e2c342845942014325d1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeciesStats: {fileID: 11400000, guid: 8cd66aa289e28d644b100503768efae0, type: 2}
 --- !u!1 &1790900812
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,12 +405,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f79e15179ceedd429820842656b595f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _simStep: 0.5
-  startingStats: {fileID: 0}
-  Stats: {fileID: 11400000, guid: 28bf0fa331c328e4599fdb478a32c408, type: 2}
+  simStepInterval: 0.5
+  startingStats: {fileID: 11400000, guid: 5c27d255ef219c345b3a372491c40647, type: 2}
   FishInTank: []
-  Co2Ppm: 1
-  O2Ppm: 1
+  PlantsInTank: []
+  TankVolumeInL: 75
+  Co2Ppm: 30
+  O2Ppm: 8
 --- !u!1 &1799279123
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,9 +423,8 @@ GameObject:
   - component: {fileID: 1799279125}
   - component: {fileID: 1799279124}
   - component: {fileID: 1799279126}
-  - component: {fileID: 1799279127}
   m_Layer: 0
-  m_Name: Fish
+  m_Name: Neon Tetra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,18 +507,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b413b3951e0d7aa40bcdf6aa5c089bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tank: {fileID: 1790900814}
-  o2AffectRate: 0.01
-  co2AffectRate: 0.01
---- !u!114 &1799279127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799279123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67518ff10b15dee4684cd6869d9ca505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  SpeciesStats: {fileID: 11400000, guid: 88f3d5d36a5f89e4db94f0581037665d, type: 2}

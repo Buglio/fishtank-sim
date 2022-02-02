@@ -7,20 +7,19 @@ namespace fishtank
     {
         public static TankManager Instance = null;
 
-        [SerializeField] float _simStep = 0.5f; // All this stuff could be moved to the Game Manager
+        [SerializeField] float simStepInterval = 0.5f; // All this stuff could be moved to the Game Manager
         [SerializeField] TankStats_SO startingStats;
 
-        public TankStats_SO Stats;
-
         public List<Fish> FishInTank = new List<Fish>();
-        //public List<Plant> PlantsInTank = new List<Plant>();
+        public List<Plant> PlantsInTank = new List<Plant>();
 
-        public float Co2Ppm = 1;
-        public float O2Ppm = 1;
+        public int TankVolumeInL = 75;
+        public float Co2Ppm = 30;
+        public float O2Ppm = 8;
 
-        float _stepTimer = 0;
+        float stepTimer = 0;
 
-        private void Awake()
+        void Awake()
         {
             EnforceSingleton();
         }
@@ -28,10 +27,15 @@ namespace fishtank
 
         void Update()
         {
-            _stepTimer += Time.deltaTime;
-            if (_stepTimer > _simStep)
+            SimulateSteps();
+        }
+
+        void SimulateSteps()
+        {
+            stepTimer += Time.deltaTime;
+            if (stepTimer > simStepInterval)
             {
-                _stepTimer -= _simStep;
+                stepTimer -= simStepInterval;
                 DoSimulationStep();
             }
         }
@@ -41,6 +45,11 @@ namespace fishtank
             foreach (Fish fish in FishInTank)
             {
                 fish.SimulateStep();
+            }
+
+            foreach (Plant plant in PlantsInTank)
+            {
+                plant.SimulateStep();
             }
         }
 
