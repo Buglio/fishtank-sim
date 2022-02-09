@@ -9,16 +9,18 @@ namespace fishtank
         public FishSpeciesStats_SO SpeciesStats;
         TankManager tank;
 
-        int ID;
-        int age;
-        bool canReproduce;
-        float hunger; // Between 0 and 1
-        float health; // Between 0 and 1
+        [SerializeField] int ID;
+        [SerializeField] int age = 0;       // increment at the end of each day/night cycle
+        [SerializeField] bool canReproduce;
+        [SerializeField] float hunger = 1f; // Between 0 and 1
+        [SerializeField] float health = 1f; // Between 0 and 1
+        [SerializeField] float weightG;
         //float happiness; // ?
 
         void Awake()
         {
             ID = this.GetHashCode();
+            weightG = SpeciesStats.MinWeightInGrams;    // start fish as baby weight
 
             tank = TankManager.Instance;
 
@@ -30,21 +32,35 @@ namespace fishtank
 
         public void SimulateStep()
         {
-            //UpdateStats();
+            UpdateStats();
             AffectTankStats(); 
         }
 
         void UpdateStats()
         {
-            throw new NotImplementedException();
-            // Check if tank stats are within the requirement range of the fish
-            // Affect fish health, age, happiness, etc
+            // HUNGER
+            hunger -= 0.0001f; // reduce hunger        // this should run out in one day cycle
+            if (hunger < 0.5f && tank.FoodMG > 0)
+            {
+                var MealSizeMG = UnityEngine.Random.Range(weightG * 0.018f, weightG * 0.025f) * 1000;
+                var PossibleMealSizeMG = MealSizeMG <= tank.FoodMG ? MealSizeMG : tank.FoodMG;
+                print(MealSizeMG);
+                print(PossibleMealSizeMG);
+                print(tank.FoodMG);
+                tank.FoodMG -= PossibleMealSizeMG;
+                hunger = 1f; 
+            }
+
+            // HEALTH
+            if (tank.Co2Ppm > 29f) // adjust value later
+            {
+                health -= 0.000001f;
+            }
         }
 
         // This is duplicate code. Also present in the plant class.
         void AffectTankStats()
         {
-            print("Fish affecting tank stats...");
             tank.O2Ppm += SpeciesStats.O2AffectRate; // Make this logarithmic eventually
             tank.Co2Ppm += SpeciesStats.Co2AffectRate;
         }

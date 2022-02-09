@@ -24,6 +24,14 @@ namespace fishtank
 
         public float MaxLifespanInYears;
 
+        public int MinTempK;
+
+        public int MaxTempK;
+
+        public float MinPH;
+
+        public float MaxPH;
+
         public int SpeedCMPerSec;
 
         public DietClass Diet;

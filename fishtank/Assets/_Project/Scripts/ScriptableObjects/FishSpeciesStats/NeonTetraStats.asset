@@ -17,10 +17,14 @@ MonoBehaviour:
   SizeClass: 0
   MinSizeInMM: 38
   MaxSizeInMM: 51
-  MinWeightInGrams: 0
-  MaxWeightInGrams: 0
+  MinWeightInGrams: 0.04
+  MaxWeightInGrams: 0.13
   MinLifespanInYears: 3
   MaxLifespanInYears: 8
+  MinTempK: 295
+  MaxTempK: 300
+  MinPH: 4.6
+  MaxPH: 7.6
   SpeedCMPerSec: 5
   Diet: 3
   MovementStyle: 0
