@@ -11,7 +11,7 @@ namespace fishtank
         }
         public static TankManager Instance { get; private set; }
 
-        [Range(0.0001f, 10f)]                         // Change this to a modifier later, rather than increasing simStepInterval
+        [Range(0.001f, 100f)]                         // Change this to a modifier later, rather than increasing simStepInterval
         [SerializeField] float timeScale = 1f;
         //[SerializeField] TankStats_SO startingStats;
 

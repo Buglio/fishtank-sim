@@ -20,10 +20,14 @@ namespace fishtank
         [DebugGUIPrint, DebugGUIGraph(min: 0, max: 100, group: 2, r: 0, g: 0, b: 1)]
         float O2;
 
+        // Graph Field O2
+        [DebugGUIPrint, DebugGUIGraph(min: 0, max: 1, group: 0, r: 1, g: 1, b: 1)]
+        float DayCycle;
+
         void Start()
         {
             DebugGUI.Log("Hello! I will disappear in five seconds!");
-            InvokeRepeating("UpdateGraph", 0.25f, 0.25f);
+            InvokeRepeating("UpdateGraph", 0.05f, 0.05f);
         }
 
         void UpdateGraph()
@@ -31,9 +35,12 @@ namespace fishtank
             pH = tankManager.PH;
             Co2 = tankManager.Co2Ppm;
             O2 = tankManager.O2Ppm;
+            DayCycle = Mathf.Sin(tankManager.DayCycle * Mathf.PI * 2);
+
             DebugGUI.Graph("Co2", Co2);
             DebugGUI.Graph("O2", O2);
             DebugGUI.Graph("pH", pH);
+            DebugGUI.Graph("time", DayCycle);
         }
 
         void OnDestroy()
