@@ -11,8 +11,8 @@ namespace fishtank
         }
         public static TankManager Instance { get; private set; }
 
-        [Range(0.0001f, 0.5f)]                         // Change this to a modifier later, rather than increasing simStepInterval
-        [SerializeField] float simStepInterval = 0.5f; // All this stuff could be moved to the Game Manager
+        [Range(0.0001f, 10f)]                         // Change this to a modifier later, rather than increasing simStepInterval
+        [SerializeField] float timeScale = 1f;
         //[SerializeField] TankStats_SO startingStats;
 
         public List<Fish> FishInTank = new List<Fish>();
@@ -24,6 +24,8 @@ namespace fishtank
         public float PH = 7f;
         public float TempK = 295f;
         public float FoodMG = 0;
+        public float DayCycle = 0f;     // 0 to 1 is a full day
+        public float Days = 0;
 
         // add food to tank
         [ContextMenu("Add 100mg of Food")]
@@ -32,30 +34,33 @@ namespace fishtank
             FoodMG += 100f;
         }
 
-        float stepTimer = 0;
-
-        void Update()
+        void Start()
         {
-            SimulateSteps();
+            InvokeRepeating("SimulateSteps", 1f, 1f);
+        }
+        void UpdateTime()
+        {
+            DayCycle += 1f / 86400f * timeScale;
+            if (DayCycle >= 1f)
+            {
+                DayCycle = 0f;
+                Days += 1;
+            }
         }
 
         void SimulateSteps()
         {
-            stepTimer += Time.deltaTime;
-            if (stepTimer > simStepInterval)
-            {
-                stepTimer -= simStepInterval;
-                DoSimulationStep();
-            }
+            DoSimulationStep();
+            UpdateTime();
         }
 
         void DoSimulationStep()
         {
             foreach (Fish fish in FishInTank)
-                fish.SimulateStep();
+                fish.SimulateStep(timeScale);
 
             foreach (Plant plant in PlantsInTank)
-                plant.SimulateStep();
+                plant.SimulateStep(timeScale);
         }
 
 

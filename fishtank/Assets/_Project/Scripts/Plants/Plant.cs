@@ -16,13 +16,13 @@ namespace fishtank
                 tank.PlantsInTank.Add(this);
         }
 
-        public void SimulateStep()
+        public void SimulateStep(float timeScale)
         {
-            //UpdateStats();
-            AffectTankStats();
+            //UpdateStats(timeScale);
+            AffectTankStats(timeScale);
         }
 
-        void UpdateStats()
+        void UpdateStats(float timeScale)
         {
             throw new NotImplementedException();
             // Check if tank stats are within the requirement range of the plant
@@ -30,10 +30,10 @@ namespace fishtank
         }
 
         // This method is duplicated across this class and the fish class. Maybe we make a base class?
-        void AffectTankStats()
+        void AffectTankStats(float timeScale)
         {
-            tank.O2Ppm += SpeciesStats.O2AffectRate; // Make this logarithmic eventually
-            tank.Co2Ppm += SpeciesStats.Co2AffectRate;
+            tank.O2Ppm += SpeciesStats.O2AffectRate * timeScale; // Make this logarithmic eventually
+            tank.Co2Ppm += SpeciesStats.Co2AffectRate * timeScale;
         }
     }
 }

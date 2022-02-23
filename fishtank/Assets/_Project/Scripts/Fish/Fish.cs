@@ -30,19 +30,19 @@ namespace fishtank
                 tank.FishInTank.Add(this);
         }
 
-        public void SimulateStep()
+        public void SimulateStep(float timeScale)
         {
-            UpdateStats();
-            AffectTankStats(); 
+            UpdateStats(timeScale);
+            AffectTankStats(timeScale); 
         }
 
-        void UpdateStats()
+        void UpdateStats(float timeScale)
         {
             // HUNGER
             hunger -= 0.0001f; // reduce hunger        // this should run out in one day cycle
             if (hunger < 0.5f && tank.FoodMG > 0)
             {
-                var MealSizeMG = UnityEngine.Random.Range(weightG * 0.018f, weightG * 0.025f) * 1000;
+                var MealSizeMG = UnityEngine.Random.Range(weightG * 0.018f, weightG * 0.025f) * 1000 * timeScale;
                 var PossibleMealSizeMG = MealSizeMG <= tank.FoodMG ? MealSizeMG : tank.FoodMG;
                 print(MealSizeMG);
                 print(PossibleMealSizeMG);
@@ -54,15 +54,15 @@ namespace fishtank
             // HEALTH
             if (tank.Co2Ppm > 29f) // adjust value later
             {
-                health -= 0.000001f;
+                health -= 0.000001f * timeScale;
             }
         }
 
         // This is duplicate code. Also present in the plant class.
-        void AffectTankStats()
+        void AffectTankStats(float timeScale)
         {
-            tank.O2Ppm += SpeciesStats.O2AffectRate; // Make this logarithmic eventually
-            tank.Co2Ppm += SpeciesStats.Co2AffectRate;
+            tank.O2Ppm += SpeciesStats.O2AffectRate * timeScale; // Make this logarithmic eventually
+            tank.Co2Ppm += SpeciesStats.Co2AffectRate * timeScale;
         }
     }
 }

@@ -43,6 +43,7 @@
      <Compile Include="Assets\_Project\Scripts\ScriptableObjects\FishSpeciesStats\FishSpeciesStats_SO.cs" />
      <Compile Include="Assets\_Project\Scripts\Enums.cs" />
      <Compile Include="Assets\_Project\Scripts\Plants\Plant.cs" />
+     <Compile Include="Assets\GraphManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.26f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -705,6 +706,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{3a5c1d91-34b9-4ec6-b0e5-055320af3f12}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
