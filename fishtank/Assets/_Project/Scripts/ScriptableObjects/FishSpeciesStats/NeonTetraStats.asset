@@ -31,4 +31,4 @@ MonoBehaviour:
   BodyTemp: 0
   O2AffectRate: -0.0000226667
   Co2AffectRate: 0.0000226667
-  AmmoniaAffectRate: 0
+  AmmoniaAffectRate: 0.01

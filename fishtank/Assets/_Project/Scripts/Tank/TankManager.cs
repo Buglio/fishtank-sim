@@ -21,6 +21,7 @@ namespace fishtank
         //public int TankVolumeInL = 75;
         public float Co2Ppm = 30;
         public float O2Ppm = 8;
+        public float ammoniaPpm = 0;
         public float PH = 7f;
         public float TempK = 295f;
         public float FoodMG = 0;
@@ -62,10 +63,5 @@ namespace fishtank
             foreach (Plant plant in PlantsInTank)
                 plant.SimulateStep(timeScale);
         }
-
-
-
-        
-
     }
 }

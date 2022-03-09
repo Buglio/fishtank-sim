@@ -880,7 +880,8 @@ MonoBehaviour:
   PlantsInTank: []
   Co2Ppm: 30
   O2Ppm: 8
-  PH: 7
+  ammoniaPpm: 0
+  PH: 7.5
   TempK: 295
   FoodMG: 0
   DayCycle: 0
@@ -896,6 +897,7 @@ GameObject:
   - component: {fileID: 1799279125}
   - component: {fileID: 1799279124}
   - component: {fileID: 1799279126}
+  - component: {fileID: 1799279127}
   m_Layer: 0
   m_Name: Neon Tetra
   m_TagString: Untagged
@@ -987,6 +989,27 @@ MonoBehaviour:
   hunger: 1
   health: 1
   weightG: 0
+--- !u!114 &1799279127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799279123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce82871b526c0847acde678623f7d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.025
+  xLimit: 5
+  yLimit: 4
+  xPos: 0
+  yPos: 0
+  angleRad: 2
+  jitterLevel: 0.1
+  flip: 0
+  Speed: 0.1
 --- !u!1 &1991781026
 GameObject:
   m_ObjectHideFlags: 0

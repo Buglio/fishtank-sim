@@ -38,23 +38,45 @@ namespace fishtank
 
         void UpdateStats(float timeScale)
         {
+            HandleHunger(timeScale);
+
+            HandleHealth(timeScale);
+        }
+
+        void HandleHealth(float timeScale)
+        {
+            var idealPh = new Vector2Int(5, 7);
+            var phExtremes = new Vector2Int(0, 14);
+
+            var phInIdealRange = tank.PH >= idealPh.x && tank.PH <= idealPh.y;
+            // If ph not in acceptable range
+            if (!phInIdealRange)
+            {
+                var pH = tank.PH;
+                if (pH > idealPh.y)
+                {
+                    var healthDecreaseAmount = (float)(Math.Pow(pH - idealPh.y, 3) / 3) / 8;
+                    health -= healthDecreaseAmount;
+                }
+                if (pH < idealPh.x)
+                {
+                    var healthDecreaseAmount = (float)-((Math.Pow(pH - idealPh.x, 3) / 3) / 8);
+                    health -= healthDecreaseAmount;
+                }
+            }
+        }
+
+
+        void HandleHunger(float timeScale)
+        {
             // HUNGER
-            hunger -= 0.0001f; // reduce hunger        // this should run out in one day cycle
+            hunger -= 0.0001f * timeScale; // reduce hunger        // this should run out in one day cycle
             if (hunger < 0.5f && tank.FoodMG > 0)
             {
-                var MealSizeMG = UnityEngine.Random.Range(weightG * 0.018f, weightG * 0.025f) * 1000 * timeScale;
-                var PossibleMealSizeMG = MealSizeMG <= tank.FoodMG ? MealSizeMG : tank.FoodMG;
-                print(MealSizeMG);
-                print(PossibleMealSizeMG);
-                print(tank.FoodMG);
-                tank.FoodMG -= PossibleMealSizeMG;
-                hunger = 1f; 
-            }
+                var mealSizeMG = UnityEngine.Random.Range(weightG * 0.018f, weightG * 0.025f) * 1000;
 
-            // HEALTH
-            if (tank.Co2Ppm > 29f) // adjust value later
-            {
-                health -= 0.000001f * timeScale;
+                tank.FoodMG -= Mathf.Clamp(mealSizeMG, 0f, tank.FoodMG); ;
+                hunger = 1f;
             }
         }
 
@@ -63,6 +85,7 @@ namespace fishtank
         {
             tank.O2Ppm += SpeciesStats.O2AffectRate * timeScale; // Make this logarithmic eventually
             tank.Co2Ppm += SpeciesStats.Co2AffectRate * timeScale;
+            tank.ammoniaPpm += SpeciesStats.AmmoniaAffectRate * timeScale;
         }
     }
 }
