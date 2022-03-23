@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,12 +12,14 @@ namespace fishtank
         }
         public static TankManager Instance { get; private set; }
 
-        [Range(0.001f, 100f)]                         // Change this to a modifier later, rather than increasing simStepInterval
+        [Range(0.001f, 100f)] // Change this to a modifier later, rather than increasing simStepInterval
         [SerializeField] float timeScale = 1f;
         //[SerializeField] TankStats_SO startingStats;
 
         public List<Fish> FishInTank = new List<Fish>();
         public List<Plant> PlantsInTank = new List<Plant>();
+        
+        public List<Boid> BoidsInTank = new List<Boid>();
 
         //public int TankVolumeInL = 75;
         public float Co2Ppm = 30;
@@ -39,6 +42,7 @@ namespace fishtank
         {
             InvokeRepeating("SimulateSteps", 1f, 1f);
         }
+
         void UpdateTime()
         {
             DayCycle += 1f / 86400f * timeScale;

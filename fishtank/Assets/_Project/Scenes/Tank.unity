@@ -878,6 +878,7 @@ MonoBehaviour:
   timeScale: 1
   FishInTank: []
   PlantsInTank: []
+  BoidsInTank: []
   Co2Ppm: 30
   O2Ppm: 8
   ammoniaPpm: 0
@@ -898,6 +899,7 @@ GameObject:
   - component: {fileID: 1799279124}
   - component: {fileID: 1799279126}
   - component: {fileID: 1799279127}
+  - component: {fileID: 1799279128}
   m_Layer: 0
   m_Name: Neon Tetra
   m_TagString: Untagged
@@ -1010,6 +1012,24 @@ MonoBehaviour:
   jitterLevel: 0.1
   flip: 0
   Speed: 0.1
+--- !u!114 &1799279128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799279123}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df66d24e29d0054a9039035fabda1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tank: {fileID: 0}
+  velocity: {x: 0, y: 0}
+  acceleration: {x: 0, y: 0}
+  maxForce: 0.1
+  maxSpeed: 5
+  perception: 100
 --- !u!1 &1991781026
 GameObject:
   m_ObjectHideFlags: 0
