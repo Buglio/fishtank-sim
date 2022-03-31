@@ -14,7 +14,16 @@ namespace fishtank
 
         public float maxForce = 0.1f;
         public int maxSpeed = 5;
-        public int perception = 100;
+        public int perception = 1;
+        public float width = 9f;
+        public float height = 5f;
+
+        [Range(0f, 2f)]
+        public float alignStrength;
+        [Range(0f, 2f)]
+        public float cohesionStrength;
+        [Range(0f, 2f)]
+        public float separationStrength;
 
         private void Awake()
         {
@@ -26,11 +35,20 @@ namespace fishtank
 
         public void Update()
         {
-            Edges();
             ApplyBehavior(TankManager.Instance.BoidsInTank);
             
             // update position
-            this.transform.position += (Vector3)velocity;
+            if (velocity.x > 0)
+            {
+                transform.eulerAngles = new Vector3(0f,-180f,0f);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0f,0f,0f);
+            }
+            Edges();
+            this.transform.position += (Vector3)velocity / 100;
+            print((Vector3)velocity / 100);
             
             // update velocity
             velocity += acceleration;
@@ -55,10 +73,30 @@ namespace fishtank
             
         }
 
+
         public void Edges()
         {
-            // bind the movement to the screen bounds
-            {}
+            if (transform.position.x > width)
+            {
+                //velocity *= new Vector2(-1f,1f);
+                transform.position = new Vector3(-width, transform.position.y,0f);
+            }
+            else if (transform.position.x < width * -1f)
+            {
+                //velocity *= new Vector2(-1f,1f);
+                transform.position = new Vector3(width, transform.position.y,0f);
+            }
+
+            if (transform.position.y > height)
+            {
+                //velocity *= new Vector2(1f,-1f);
+                transform.position = new Vector3(transform.position.x, -height,0f);
+            }
+            else if (transform.position.y < height * -1f)
+            {
+                //velocity *= new Vector2(1f,-1f);
+                transform.position = new Vector3(transform.position.x, height,0f);
+            }
         }
 
         public Vector2 Align(List<Boid> boids)
@@ -74,17 +112,17 @@ namespace fishtank
                     averageVector += boid.velocity;
                     total++;
                 }
-                
-                if (total > 0)
-                {
-                    averageVector /= total;
-                    averageVector = new Vector2(averageVector.x, averageVector.y); // TODO: Sus
-                    averageVector *= averageVector.normalized * maxSpeed;
-                    steering = averageVector - velocity;
-                }
             }
-            
-            return steering;
+            if (total > 0)
+            {
+                averageVector /= total;
+                averageVector = new Vector2(averageVector.x, averageVector.y); // TODO: Sus
+                averageVector *= averageVector.normalized * maxSpeed;
+                steering = averageVector - velocity;
+                if (steering.magnitude > maxForce)
+                    steering = steering.normalized * maxForce;
+            }
+            return steering * alignStrength;
         }
 
         private Vector2 Cohesion(List<Boid> boids)
@@ -117,8 +155,7 @@ namespace fishtank
             {
                 steering = steering.normalized * maxForce;
             }
-
-            return steering;
+            return steering * cohesionStrength;
         }
 
         private Vector2 Separation(List<Boid> boids)
@@ -150,8 +187,7 @@ namespace fishtank
                 
             if (steering.magnitude > maxForce)
                 steering = steering.normalized * maxForce;
-
-            return steering;
+            return steering * separationStrength;
         }
     }
 }
