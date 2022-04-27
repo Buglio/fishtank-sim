@@ -1,5 +1,8 @@
 # fishtank sim
 <img src='sprites/neon_tetra_adult_v1.png'>
+<img src='sprites/neon_blue_dwarf_gourami.png'>
+<img src='sprites/platy_adult.png'>
+
 
 ## Requirements
 Install DebugGUI asset to fishtank/Assets/Plugins
