@@ -40,14 +40,5 @@ namespace fishtank
 
         // Somewhere have a multiplier to change the following stats based on life stage
         public float BodyTemp;
-
-        [Tooltip("Positive float from 0 to 1.")]
-        public float O2AffectRate;
-
-        [Tooltip("Negative float from 0 to 1.")]
-        public float Co2AffectRate;
-
-        [Tooltip("Positive float from 0 to 1.")]
-        public float AmmoniaAffectRate;
     }
 }

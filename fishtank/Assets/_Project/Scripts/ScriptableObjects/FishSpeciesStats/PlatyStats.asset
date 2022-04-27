@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3005b2f3d96e53c4d9ee1708036082ba, type: 3}
+  m_Name: PlatyStats
+  m_EditorClassIdentifier: 
+  CommonName: Platy
+  ScientificName: Xiphophorus maculatus
+  SizeClass: 0
+  MinSizeInMM: 51
+  MaxSizeInMM: 64
+  MinWeightInGrams: 0.055
+  MaxWeightInGrams: 0.17
+  MinLifespanInYears: 3
+  MaxLifespanInYears: 5
+  MinTempK: 295
+  MaxTempK: 300
+  MinPH: 7
+  MaxPH: 8
+  SpeedCMPerSec: 4
+  Diet: 3
+  MovementStyle: 0
+  BodyTemp: 0

@@ -83,9 +83,9 @@ namespace fishtank
         // This is duplicate code. Also present in the plant class.
         void AffectTankStats(float timeScale)
         {
-            tank.O2Ppm += SpeciesStats.O2AffectRate * timeScale; // Make this logarithmic eventually
-            tank.Co2Ppm += SpeciesStats.Co2AffectRate * timeScale;
-            tank.ammoniaPpm += SpeciesStats.AmmoniaAffectRate * timeScale;
+            tank.O2Ppm -= 0.000188f * weightG * timeScale; // sus
+            tank.Co2Ppm += 0.000188f * weightG * timeScale; // sus, def change this
+            tank.ammoniaPpm += 0.0000001f * weightG * timeScale; // sus, def change this
         }
     }
 }
