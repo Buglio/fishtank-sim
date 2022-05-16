@@ -32,5 +32,8 @@ namespace fishtank
 
         [Tooltip("Positive float from 0 to 1.")]
         public float AmmoniaAffectRate;
+        
+        [Tooltip("The prefab to use when creating new nodes of this plant type.")]
+        public GameObject PlantNodePrefab;
     }
 }

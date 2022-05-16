@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 namespace fishtank
 {
@@ -8,6 +9,8 @@ namespace fishtank
     {
         public PlantSpeciesStats_SO SpeciesStats;
         TankManager tank;
+
+        private PlantNode[] _children;
 
         void Awake()
         {
@@ -20,6 +23,23 @@ namespace fishtank
         {
             //UpdateStats(timeScale);
             AffectTankStats(timeScale);
+
+            HandleChildPlants(timeScale, _children);
+        }
+
+        private void HandleChildPlants(float timeScale, PlantNode[] children)
+        {
+            foreach (var childPlantNode in children)
+            {
+                
+                childPlantNode.Grow(timeScale);
+                
+                if (childPlantNode.age > 1)
+                {
+                    var shouldSpawnChild = true;
+                    childPlantNode.SpawnChild(SpeciesStats.PlantNodePrefab);
+                }
+            }
         }
 
         void UpdateStats(float timeScale)
