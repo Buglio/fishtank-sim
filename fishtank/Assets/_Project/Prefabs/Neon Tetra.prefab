@@ -1,5 +1,429 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3024915952966420182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5317813940039151288}
+  - component: {fileID: 2533326088558784560}
+  - component: {fileID: 6190106236321205296}
+  - component: {fileID: 2856437790297674934}
+  - component: {fileID: 4426390317354320546}
+  - component: {fileID: 7017578930270682753}
+  - component: {fileID: 6822309560853363220}
+  - component: {fileID: 510676286330355614}
+  - component: {fileID: 2868713992918489351}
+  - component: {fileID: 8686285304825785032}
+  m_Layer: 0
+  m_Name: AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5317813940039151288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7057699053743129339}
+  - {fileID: 1205699115734156496}
+  m_Father: {fileID: 5056071659850883318}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2533326088558784560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1225004217, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateFrequency: 20
+  Threaded: 0
+  SensorShared: 1
+  Sensor: {fileID: 11400000, guid: 5c141623a94b91b4190da4c80d9546cd, type: 2}
+  objectiveLabels:
+  - NeonTetraInterest
+  - NeonTetraAvoid
+  context:
+    minObjectives: 0001
+    normObjectives: 0101
+    constraintSolver:
+      Unlimited: 0
+      Epsilons:
+      - 0
+      - 0
+  selfObject: {fileID: 5056071659850883312}
+  indicatorGizmo:
+    Enabled: 1
+    Wireframe: 0
+    ShowReceptors: 1
+    ShowConstraints: 0
+    DrawDoubleSided: 1
+    ResolutionThreshold: 32
+    CustomScale: 1
+    Spacing: 1
+    SolutionColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    InterpolatedSolutionColor: {r: 1, g: 0.6, b: 0.011764706, a: 1}
+    ConstraintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    ReceptorColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+    LineColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+    ObjectiveColors:
+    - {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+    - {r: 1, g: 0.23529412, b: 0.23529412, a: 1}
+    - {r: 0.39215687, g: 0.62352943, b: 0.8392157, a: 1}
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  objectiveFoldout: 1
+--- !u!114 &6190106236321205296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -621085426, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Torque: 0.5
+  Speed: 10
+  ObjectiveAsSpeed: -1
+  Context: {fileID: 2533326088558784560}
+  Body2D: {fileID: 657455908912795516}
+--- !u!114 &2856437790297674934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 336943168, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environmentFoldout: 0
+  SteeringPerceiver: {fileID: 0}
+  ObjectTag: SteeringPerceiver
+  Range: -1
+  rangeGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+--- !u!114 &4426390317354320546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 805961412, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 0
+  Label: AIM Wander
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments: []
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 0
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.2
+  steeringFoldout: 1
+  Wander:
+    TargetObjective: 0
+    MagnitudeMultiplier: 0.6
+    SensitivityOffset: 0
+    ValueWriting: 0
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 1
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+    Up: {x: 0, y: 0, z: 1}
+    AngleDeviationMin: 0
+    AngleDeviationMax: 60
+    TimeDeviationMin: 0
+    TimeDeviationMax: 0.1
+    Steadiness: 0
+    planarMappingType: 1
+--- !u!114 &7017578930270682753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 803436379, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 0
+  Label: AIM Avoid Neon Tetra Avoid
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments:
+  - Neon Tetra Avoid
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 0
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.2
+  steeringFoldout: 1
+  innerRadiusGizmo:
+    Enabled: 1
+    Color: {r: 1, g: 0.6402363, b: 0.5686275, a: 1}
+  outerRadiusGizmo:
+    Enabled: 1
+    Color: {r: 0.79607844, g: 0.3158548, b: 0.24705882, a: 1}
+  innerCircleGizmo:
+    Enabled: 0
+    Color: {r: 1, g: 0.6402363, b: 0.5686275, a: 1}
+  outerCircleGizmo:
+    Enabled: 0
+    Color: {r: 0.79607844, g: 0.3158548, b: 0.24705882, a: 1}
+  radiusSteeringFoldout: 1
+  Avoid:
+    TargetObjective: 1
+    MagnitudeMultiplier: 10
+    SensitivityOffset: 0
+    ValueWriting: 0
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 0
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+    InnerRadius: 0
+    OuterRadius: 3
+    RadiusMapping: 2
+    PlaneBend: 0
+    UseVelocity: 0
+    DefaultOrientation: {x: 0, y: 1, z: 0}
+  PlaneGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+    PlaneSize: 5
+--- !u!114 &6822309560853363220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1062805814, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 0
+  Label: AIM Seek Neon Tetra Interest
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments:
+  - Neon Tetra Interest
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 1
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.1
+  steeringFoldout: 1
+  innerRadiusGizmo:
+    Enabled: 1
+    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
+  outerRadiusGizmo:
+    Enabled: 1
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+  innerCircleGizmo:
+    Enabled: 0
+    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
+  outerCircleGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+  radiusSteeringFoldout: 1
+  Seek:
+    TargetObjective: 0
+    MagnitudeMultiplier: 1
+    SensitivityOffset: 0
+    ValueWriting: 0
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 0
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+    InnerRadius: 1
+    OuterRadius: 5
+    RadiusMapping: 2
+    ForEachReceptor: 1
+--- !u!114 &510676286330355614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1560585076, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 0
+  Label: AIM Adjust Neon Tetra Interest
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments:
+  - Neon Tetra Interest
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 0
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.2
+  steeringFoldout: 1
+  innerRadiusGizmo:
+    Enabled: 1
+    Color: {r: 0.5686275, g: 0.828566, b: 1, a: 1}
+  outerRadiusGizmo:
+    Enabled: 1
+    Color: {r: 0.5686275, g: 0.827451, b: 1, a: 1}
+  innerCircleGizmo:
+    Enabled: 0
+    Color: {r: 0.5686275, g: 0.828566, b: 1, a: 1}
+  outerCircleGizmo:
+    Enabled: 0
+    Color: {r: 0.5686275, g: 0.827451, b: 1, a: 1}
+  radiusSteeringFoldout: 1
+  Adjust:
+    TargetObjective: 0
+    MagnitudeMultiplier: 0.2
+    SensitivityOffset: 0
+    ValueWriting: 2
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 0
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+    InnerRadius: 0
+    OuterRadius: 5
+    RadiusMapping: 2
+--- !u!114 &2868713992918489351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1187903073, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 1000
+  Label: 
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  Stabilization:
+    TargetObjective: 0
+    AngleMapping: 2
+    MaxIncrease: 0.2
+    MaxAngle: 45
+--- !u!114 &8686285304825785032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -561398845, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 2000
+  Label: 
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  PlanarInterpolation:
+    TargetObjective: 0
+    Constraint: 1
 --- !u!1 &5056071659850883312
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5056071659850883318}
   - component: {fileID: 5056071659850883319}
+  - component: {fileID: 657455908912795516}
   - component: {fileID: 5056071659850883317}
   - component: {fileID: 5056071659850883316}
   - component: {fileID: 5056071659850883323}
@@ -30,7 +455,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.16, y: -2.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5317813940039151288}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85,6 +511,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &657455908912795516
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056071659850883312}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 5
+  m_AngularDrag: 10
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &5056071659850883317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +558,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5056071659850883312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fce82871b526c0847acde678623f7d81, type: 3}
   m_Name: 
@@ -148,3 +595,63 @@ MonoBehaviour:
   alignStrength: 0
   cohesionStrength: 0
   separationStrength: 0
+--- !u!1 &8511591319556836209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205699115734156496}
+  m_Layer: 7
+  m_Name: NeonTetraAvoid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1205699115734156496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8511591319556836209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5317813940039151288}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8960954518523787181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7057699053743129339}
+  m_Layer: 6
+  m_Name: NeonTetraInterest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7057699053743129339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960954518523787181}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5317813940039151288}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
