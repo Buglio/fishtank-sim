@@ -4220,7 +4220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8e84105ac5c444c8444c1db6b7bad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tankStatsTextBody: {fileID: 845762242}
+  tankStatsTextBody: {fileID: 845762242}
 --- !u!222 &2102537543
 CanvasRenderer:
   m_ObjectHideFlags: 0
