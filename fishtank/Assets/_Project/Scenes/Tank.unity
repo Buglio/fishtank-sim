@@ -1513,7 +1513,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 490}
-  m_SizeDelta: {x: 225.35, y: 45.77}
+  m_SizeDelta: {x: 303.98, y: 45.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &537732050
 MonoBehaviour:
@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tank Stats
+  m_text: Tank Stats Graph
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1744,17 +1744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902b767a45c917245b420593501210c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawInBuild: 1
-  displayGraphs: 1
-  displayLogs: 1
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0.7}
-  graphs:
-  - name: 
-    max: 0
-    min: 0
-    autoScale: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-    group: 0
 --- !u!4 &582579916
 Transform:
   m_ObjectHideFlags: 0
@@ -3908,10 +3897,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tankManager: {fileID: 1790900814}
-  yMaximum: 32
-  yMinimum: 28
   xOffset: 7
-  maxValues: 20
+  maxValues: 100
+  yMinDefault: 29.99
+  yMaxDefault: 30.01
 --- !u!1 &1625126392
 GameObject:
   m_ObjectHideFlags: 0

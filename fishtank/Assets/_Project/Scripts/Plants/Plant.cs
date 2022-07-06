@@ -12,6 +12,7 @@ namespace fishtank
 
         private PlantNode[] _children;
 
+        
         void Awake()
         {
             tank = TankManager.Instance;

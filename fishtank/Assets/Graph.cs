@@ -7,55 +7,66 @@ namespace fishtank
 {
     public class Graph : MonoBehaviour
     {
-        public TankManager tankManager;
-        public float yMaximum = 32f;
-        public float yMinimum = 28f;
-        public float xOffset = 7f;
-        public int maxValues = 20;
+        [SerializeField] private TankManager tankManager;
+        //[SerializeField] private float yMaximum = 32f;
+        //[SerializeField] private float yMinimum = 28f;
+        [SerializeField] private float xOffset = 7f;
+        [SerializeField] private int maxValues = 20;
 
-        private RectTransform graphContainer;
-        private List<float> data = new List<float>();
+        public float yMinDefault = 28f;
+        public float yMaxDefault = 32f;
+
+        private RectTransform _graphContainer;
+        private List<float> _data = new List<float>();
 
         private void Start()
         {
-            InvokeRepeating(nameof(UpdateGraph), 3f, 1f);
+            InvokeRepeating(nameof(UpdateGraph), 3f, .25f);
         }
         private void UpdateGraph() 
         {
             Debug.Log("Update Graph!");
-            data.Add(tankManager.Co2Ppm);
-            while (data.Count > maxValues)
+            _data.Add(tankManager.Co2Ppm);
+            while (_data.Count > maxValues)
             {
-                data.RemoveAt(0);
+                _data.RemoveAt(0);
             }
-            graphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
-            foreach(Transform child in graphContainer.transform) GameObject.Destroy(child.gameObject);
-            ShowGraph(data);        
+            _graphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
+            foreach(Transform child in _graphContainer.transform) GameObject.Destroy(child.gameObject);
+            ShowGraph(_data);        
         }
         
-        private void ShowGraph(List<float> ValueList)
+        private void ShowGraph(List<float> valueList)
         {
-            float graphHeight = graphContainer.sizeDelta.y;
-            float graphWidth = graphContainer.sizeDelta.x;
-            Vector2 LastPoint = new Vector2(-1,-1);
-            for (int i = 0; i < ValueList.Count; i++)
+            // Find the min and max values in the data list
+            float yMin = Mathf.Max(0, Mathf.Min(_data.ToArray()));
+            float yMax = Mathf.Max(0, Mathf.Max(_data.ToArray()));
+            
+            // Only use the new yMin and yMax if they are outside the default range.
+            if (yMin > yMinDefault) yMin = yMinDefault;
+            if (yMax < yMaxDefault) yMax = yMaxDefault;
+            
+            float graphHeight = _graphContainer.sizeDelta.y;
+            float graphWidth = _graphContainer.sizeDelta.x;
+            Vector2 lastPoint = new Vector2(-1,-1);
+            for (int i = 0; i < valueList.Count; i++)
             {
                 float xPosition = xOffset + i * graphWidth / maxValues;
-                float adjValue = Remap(yMinimum, yMaximum, 0f, graphHeight, ValueList[i]);
+                float adjValue = Remap(yMin, yMax, 0f, graphHeight, valueList[i]);
                 float yPosition = adjValue;
-                Vector2 CurrentPoint = new Vector2(xPosition,yPosition);
+                Vector2 currentPoint = new Vector2(xPosition,yPosition);
                 // Create line
-                if (LastPoint != new Vector2(-1,-1)) {
-                    CreateLine(LastPoint, CurrentPoint);
+                if (lastPoint != new Vector2(-1,-1)) {
+                    CreateLine(lastPoint, currentPoint);
                 }
-                LastPoint = CurrentPoint;
+                lastPoint = currentPoint;
             }
         }
 
         private void CreateLine(Vector2 dotPositionA, Vector2 dotPositionB)
         {
             GameObject gameObject = new GameObject("dotConnection", typeof(Image));
-            gameObject.transform.SetParent(graphContainer, false);
+            gameObject.transform.SetParent(_graphContainer, false);
             gameObject.GetComponent<Image>().color = new Color(1,1,1,1);
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
             Vector2 dir = (dotPositionB - dotPositionA).normalized;
