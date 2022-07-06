@@ -3,7 +3,7 @@
 
 
 ## Requirements
-Install DebugGUI asset to fishtank/Assets/Plugins
+
 
 ## Resources
 - http://www.theaquariumwiki.com/wiki/Main_Page
