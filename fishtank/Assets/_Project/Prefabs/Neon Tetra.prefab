@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &717022829734760332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5066221934828489558}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5066221934828489558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717022829734760332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5317813940039151288}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3024915952966420182
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,6 +45,7 @@ GameObject:
   - component: {fileID: 4426390317354320546}
   - component: {fileID: 7017578930270682753}
   - component: {fileID: 6822309560853363220}
+  - component: {fileID: 7207118182046766879}
   - component: {fileID: 510676286330355614}
   - component: {fileID: 2868713992918489351}
   - component: {fileID: 8686285304825785032}
@@ -24,7 +55,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5317813940039151288
 Transform:
   m_ObjectHideFlags: 0
@@ -38,6 +69,7 @@ Transform:
   m_Children:
   - {fileID: 7057699053743129339}
   - {fileID: 1205699115734156496}
+  - {fileID: 5066221934828489558}
   m_Father: {fileID: 5056071659850883318}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,12 +92,14 @@ MonoBehaviour:
   objectiveLabels:
   - NeonTetraInterest
   - NeonTetraAvoid
+  - TankBoundsAvoid
   context:
-    minObjectives: 0001
-    normObjectives: 0101
+    minObjectives: 000100
+    normObjectives: 010101
     constraintSolver:
       Unlimited: 0
       Epsilons:
+      - 0
       - 0
       - 0
   selfObject: {fileID: 5056071659850883312}
@@ -162,7 +196,7 @@ MonoBehaviour:
   steeringFoldout: 1
   Wander:
     TargetObjective: 0
-    MagnitudeMultiplier: 0.6
+    MagnitudeMultiplier: 0.1
     SensitivityOffset: 0
     ValueWriting: 0
     LayerBlending: 0
@@ -175,10 +209,10 @@ MonoBehaviour:
     Prediction: 0
     PredictionMagnitude: 0
     Up: {x: 0, y: 0, z: 1}
-    AngleDeviationMin: 0
-    AngleDeviationMax: 60
+    AngleDeviationMin: -180
+    AngleDeviationMax: 180
     TimeDeviationMin: 0
-    TimeDeviationMax: 0.1
+    TimeDeviationMax: 0.05
     Steadiness: 0
     planarMappingType: 1
 --- !u!114 &7017578930270682753
@@ -188,7 +222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3024915952966420182}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 803436379, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
   m_Name: 
@@ -204,7 +238,7 @@ MonoBehaviour:
     tab4: 0
   advancedInspector: 0
   FilteredEnvironments:
-  - Neon Tetra Avoid
+  - Neon Tetra Interest
   GameObjects: []
   velocityGizmo:
     Enabled: 0
@@ -226,8 +260,8 @@ MonoBehaviour:
     Color: {r: 0.79607844, g: 0.3158548, b: 0.24705882, a: 1}
   radiusSteeringFoldout: 1
   Avoid:
-    TargetObjective: 1
-    MagnitudeMultiplier: 10
+    TargetObjective: 0
+    MagnitudeMultiplier: 0.4
     SensitivityOffset: 0
     ValueWriting: 0
     LayerBlending: 0
@@ -240,7 +274,7 @@ MonoBehaviour:
     Prediction: 0
     PredictionMagnitude: 0
     InnerRadius: 0
-    OuterRadius: 3
+    OuterRadius: 0.54
     RadiusMapping: 2
     PlaneBend: 0
     UseVelocity: 0
@@ -295,7 +329,7 @@ MonoBehaviour:
   radiusSteeringFoldout: 1
   Seek:
     TargetObjective: 0
-    MagnitudeMultiplier: 1
+    MagnitudeMultiplier: 0.38
     SensitivityOffset: 0
     ValueWriting: 0
     LayerBlending: 0
@@ -307,8 +341,70 @@ MonoBehaviour:
     PresetVelocity: 0
     Prediction: 0
     PredictionMagnitude: 0
-    InnerRadius: 1
-    OuterRadius: 5
+    InnerRadius: 1.92
+    OuterRadius: 7.14
+    RadiusMapping: 2
+    ForEachReceptor: 1
+--- !u!114 &7207118182046766879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024915952966420182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1062805814, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 0
+  Label: 
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments:
+  - Tank Bounds Avoid
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 0
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.2
+  steeringFoldout: 1
+  innerRadiusGizmo:
+    Enabled: 0
+    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
+  outerRadiusGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+  innerCircleGizmo:
+    Enabled: 0
+    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
+  outerCircleGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+  radiusSteeringFoldout: 1
+  Seek:
+    TargetObjective: 2
+    MagnitudeMultiplier: 12.18
+    SensitivityOffset: 0
+    ValueWriting: 0
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 0
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+    InnerRadius: 0
+    OuterRadius: 20
     RadiusMapping: 2
     ForEachReceptor: 1
 --- !u!114 &510676286330355614

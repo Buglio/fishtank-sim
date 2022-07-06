@@ -24,7 +24,7 @@ namespace fishtank
 
             tank = TankManager.Instance;
 
-            print(ReferenceEquals(tank, TankManager.Instance)); // This neat method confirms that the reference points to the instance
+            //print(ReferenceEquals(tank, TankManager.Instance)); // This neat method confirms that the reference points to the instance
 
             if (!tank.FishInTank.Contains(this))
                 tank.FishInTank.Add(this);
