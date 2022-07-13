@@ -85,7 +85,7 @@ namespace fishtank
         {
             tank.O2Ppm -= 0.000188f * weightG * timeScale; // sus
             tank.Co2Ppm += 0.000188f * weightG * timeScale; // sus, def change this
-            tank.ammoniaPpm += 0.0000001f * weightG * timeScale; // sus, def change this
+            tank.AmmoniaPpm += 0.0000001f * weightG * timeScale; // sus, def change this
         }
     }
 }

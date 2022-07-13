@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,9 +7,9 @@ namespace fishtank
     public class Graph : MonoBehaviour
     {
         [SerializeField] private TankManager tankManager;
+        [SerializeField] private TankStat statToDisplay;
         //[SerializeField] private float yMaximum = 32f;
         //[SerializeField] private float yMinimum = 28f;
-        [SerializeField] private float xOffset = 7f;
         [SerializeField] private int maxValues = 20;
 
         public float yMinDefault = 28f;
@@ -23,10 +22,34 @@ namespace fishtank
         {
             InvokeRepeating(nameof(UpdateGraph), 3f, .25f);
         }
-        private void UpdateGraph() 
+        
+        private void UpdateGraph()
         {
             Debug.Log("Update Graph!");
-            _data.Add(tankManager.Co2Ppm);
+            
+            switch (statToDisplay)
+            {
+                case TankStat.Co2Ppm:
+                    _data.Add(tankManager.Co2Ppm);
+                    break;
+                case TankStat.O2Ppm:
+                    _data.Add(tankManager.O2Ppm);
+                    break;
+                case TankStat.AmmoniaPpm:
+                    _data.Add(tankManager.AmmoniaPpm);
+                    break;
+                case TankStat.PH:
+                    _data.Add(tankManager.PH);
+                    print(tankManager.PH);
+                    break;
+                case TankStat.TempK:
+                    _data.Add(tankManager.TempK);
+                    break;
+                case TankStat.FoodMG:
+                    _data.Add(tankManager.FoodMG);
+                    break;
+            }
+
             while (_data.Count > maxValues)
             {
                 _data.RemoveAt(0);
@@ -39,19 +62,34 @@ namespace fishtank
         private void ShowGraph(List<float> valueList)
         {
             // Find the min and max values in the data list
-            float yMin = Mathf.Max(0, Mathf.Min(_data.ToArray()));
-            float yMax = Mathf.Max(0, Mathf.Max(_data.ToArray()));
+            float yMin = Mathf.Min(_data.ToArray());
+            float yMax = Mathf.Max(_data.ToArray());
             
             // Only use the new yMin and yMax if they are outside the default range.
-            if (yMin > yMinDefault) yMin = yMinDefault;
-            if (yMax < yMaxDefault) yMax = yMaxDefault;
+            //if (yMin > yMinDefault) yMin = yMinDefault;
+            //if (yMax < yMaxDefault) yMax = yMaxDefault;
+            
+            var yBuffer = (yMax - yMin) * .1f;
+            yMin -= yBuffer;
+            yMax += yBuffer;
+
+            if (yMin == yMax)
+            {
+                var val = yMin;
+                yMax = val + .01f;
+                yMin = val - .01f;
+            }
             
             float graphHeight = _graphContainer.sizeDelta.y;
             float graphWidth = _graphContainer.sizeDelta.x;
             Vector2 lastPoint = new Vector2(-1,-1);
             for (int i = 0; i < valueList.Count; i++)
             {
-                float xPosition = xOffset + i * graphWidth / maxValues;
+                // the graph should take up 90% of the total width
+                var xWidth = graphWidth / maxValues * 0.9f;
+                // The x offset should be 5% of the total width of the graph
+                var xOffset = graphWidth * .05f;
+                float xPosition = xOffset + i * xWidth;
                 float adjValue = Remap(yMin, yMax, 0f, graphHeight, valueList[i]);
                 float yPosition = adjValue;
                 Vector2 currentPoint = new Vector2(xPosition,yPosition);

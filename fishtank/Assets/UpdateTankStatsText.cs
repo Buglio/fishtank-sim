@@ -25,7 +25,7 @@ namespace fishtank
             data += $"pH: {_tankManager.PH}\n";
             data += $"Co2 ppm: {_tankManager.Co2Ppm}\n";
             data += $"o2 ppm: {_tankManager.O2Ppm}\n";
-            data += $"ammonia: {_tankManager.ammoniaPpm}\n";
+            data += $"ammonia: {_tankManager.AmmoniaPpm}\n";
 
             tankStatsTextBody.text = data;
         }

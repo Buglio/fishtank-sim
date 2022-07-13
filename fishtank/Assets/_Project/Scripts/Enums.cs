@@ -9,4 +9,14 @@ namespace fishtank
     public enum MovementClass { Schooling, Solitary, Pair, Territorial, Benthic, Edge }
     public enum SubstrateType { Sand, Gravel }
     public enum PropagationType { Runner, Branching, Floating }
+    
+    public enum TankStat
+    {
+        Co2Ppm,
+        O2Ppm,
+        AmmoniaPpm,
+        PH,
+        TempK,
+        FoodMG,
+    }
 }

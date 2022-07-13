@@ -24,7 +24,7 @@ namespace fishtank
         //public int TankVolumeInL = 75;
         public float Co2Ppm = 30;
         public float O2Ppm = 8;
-        public float ammoniaPpm = 0;
+        public float AmmoniaPpm = 0;
         public float PH = 7f;
         public float TempK = 295f;
         public float FoodMG = 0;
@@ -40,6 +40,7 @@ namespace fishtank
 
         void Start()
         {
+            Application.targetFrameRate = 60;
             InvokeRepeating("SimulateSteps", 1f, 1f);
         }
 
